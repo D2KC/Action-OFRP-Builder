@@ -36,7 +36,7 @@ on:
       MAKEFILE_NAME:
         description: 'MAKEFILE_NAME'
         required: true
-        default: 'twrp_fajita'
+        default: 'android_device_oneplus_fajita'
       BUILD_TARGET:
         description: 'BUILD_TARGET'
         required: true
@@ -110,7 +110,7 @@ jobs:
         export ALLOW_MISSING_DEPENDENCIES=true
         export FOX_AB_DEVICE=1
         set -e
-        lunch ${{ github.event.inputs.MAKEFILE_NAME }}-eng && make clean && mka adbd ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
+        lunch android_device_oneplus_fajita-eng && make clean && mka adbd ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
       continue-on-error: true
 
